@@ -5,7 +5,7 @@ function z = tracubico(f,i,xx)
     global n;
     
     if i == 0
-        z = arrayfun(f,(xx./h)) - 4*arrayfun(f,(xx+h)./h); %./ para multi y que conserve dimension
+        z = arrayfun(f,(xx./h)) - 4*arrayfun(f,(xx+h)./h);  % ./ para multi y que conserve dimension y arrayfun aplica f a algun array
     elseif i == 1
         z = arrayfun(f,(xx-x(i+1))./h) - arrayfun(f,(xx+h)./h);
     elseif i <= n-1
