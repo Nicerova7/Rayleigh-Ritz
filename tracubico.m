@@ -1,4 +1,4 @@
-function z = tracubico(f,i,xx)
+function z = tracubico(f,i,xx) #fi en el metodo
 
     global h;
     global x;
