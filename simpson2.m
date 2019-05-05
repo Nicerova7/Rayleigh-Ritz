@@ -6,5 +6,3 @@ function z=simpson2(f,a,b,n)
   C(3:2:n-1)=2;
   z = sum((h/3)*(f(x)*C));
 end
-
-%ok

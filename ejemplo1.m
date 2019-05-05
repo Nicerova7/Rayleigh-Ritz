@@ -1,9 +1,10 @@
 format long
 
+% Entradas %
 a = 0; b = 1; n = 19; % n = 19 pero como comienza con 0 son 19+1 = 20 valores
 
 global x
-x = linspace(0,1,n+1+1); %+1 porque es 20  +1 porque es linspace
+x = linspace(a,b,n+1+1); %+1 porque es 20  +1 porque es linspace
 
 global p
 p=@(x) exp(-x);
@@ -13,6 +14,8 @@ q=@(x) exp(-x);
 
 global f
 f=@(x) x-1-exp(1-x).*(x+1);
+
+% Fin de entradas $
 
 
 h = (b-a)/(n+1);
@@ -37,17 +40,17 @@ beta = zeros(1,n);
 b = zeros(1,n);
 
 for i= 1:n
-    alpha(i) = Q(4,i)+Q(4,i+1)+Q(2,i)+Q(3,i);
-    beta(i) = Q(1,i)-Q(4,i+1);
-    b(i) = Q(5,i) + Q(6,i); % en el pdf esta menos pero no se nota bien es +
+    alpha(i) = Q(4,i) + Q(4,i+1)+Q(2,i)+Q(3,i);
+    beta(i)  = Q(1,i) - Q(4,i+1);
+    b(i)     = Q(5,i) + Q(6,i); % en el pdf esta menos pero no se nota bien es +
 end
-
+ 
 a = zeros(1,n);
 zeta = zeros(1,n);
 z = zeros(1,n);
 
 a(1)    = alpha(1);
-zeta(1) = beta(1)/alpha(1);
+zeta(1) = beta(1)/a(1);
 z(1)    = b(1)/a(1);
 
 for i = 2:n-1
