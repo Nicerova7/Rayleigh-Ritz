@@ -3,21 +3,23 @@ format long
 % ENTRADAS $
 
 global x
-x = [0 , 0.15 , 0.27, 0.50, 0.67, 0.86, 1];
+x = [0 , 0.15, 0.19, 0.23, 0.25, 0.27, 0.30, 0.33, 0.35, 0.45, 0.49, 0.50, 0.55,..., 
+    0.57, 0.60, 0.63, 0.65 0.67, 0.74, 0.86, 1];
 
 n = length(x)-2; % x[6+1] = 1 pero 6 es porque array inicia en 1 entonces n = 5
 
 global p
-p=@(x) -1;
+p=@(x) exp(-x);
 
 global q
-q=@(x) pi^2/4;
+q=@(x) exp(-x);
 
 global f
-f=@(x) (pi^2/16)*cos((pi/4).*x);
+f=@(x) x-1-exp(1-x).*(x+1);
 
 % Fin de entradas $ 
 
+global h;
 h = zeros(1,n);
 
 for i = 1:(n+1)
@@ -37,7 +39,7 @@ for i = 1:n
     
 end
 
-Q(4,n+1) = (1/h(i))^2*simpson2(p,x(n+1),x(n+2),20);
+Q(4,n+1) = (1/h(n+1))^2*simpson2(p,x(n+1),x(n+2),20);
 
 alpha = zeros(1,n);
 beta = zeros(1,n);
@@ -74,8 +76,16 @@ for i = n-1:-1:1
     C(i) = z(i)-zeta(i)*C(i+1);
 end
 
-% d' = z
-% c' = zeta
-% c = beta
-% b = alpha
+yy = zeros([2*n+2,1]);
+puntos = linspace(0,1,2*n+2);
+
+for i = 2:2*n+1
+    for j = 1:n
+    yy(i-1) = yy(i-1)+C(j)*baselinealse2(j,puntos(i));
+    end
+end
+
+plot(puntos,yy)
+
+
 

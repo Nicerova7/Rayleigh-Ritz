@@ -3,18 +3,17 @@ format long
 % ENTRADAS $
 
 global n;
-n = 9;
+a = 0; b = 1; n = 19;
 
 global p
-p=@(x) 1;
+p=@(x) exp(-x);
 
 global q
-q=@(x) pi^(2);
+q=@(x) exp(-x);
 
 global f
-f=@(x) 2*pi^(2)*sin(pi*x);
+f=@(x) x-1-exp(1-x).*(x+1);
 
-a = 0;  b = 1; % limites de x -> 0 <= x <= 1
 
 global h
 h = (b-a)/(n+1) ;
@@ -26,6 +25,8 @@ x = zeros([n+2+2+2,1]); % +2 por 0 y n+1 ; +2 por x_-2,x_-1 ; +2 por x_n+2,x_n+3
 % necesitamos x_-2 y x_-1 que seran x_1 y x_2 respectivamente 
 
 x(1) = 0; x(2) = 0;
+
+% Fin de las entradas $
 
 for i = 3:n+1+3 % + 1 porque es hasta n+1 y + 3 pq estamos corriendo por linea 28
    
@@ -61,3 +62,18 @@ end
 
 c = linsolve(a,b);
 % luego paso 11 y fin
+
+
+yy = zeros([n+2,1]); % En este método tenemos 2 más de salida
+
+puntos = linspace(0,1,n+2);
+
+for i = 1:n+2
+    for j = 1:n+2
+    yy(i) = yy(i)+c(j)*tracubico(@S,j-1,puntos(i)); %tracubico != base lineal
+    end
+end
+
+plot(puntos,yy,':')
+
+

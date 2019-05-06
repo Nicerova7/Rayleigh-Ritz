@@ -17,7 +17,7 @@ f=@(x) x-1-exp(1-x).*(x+1);
 
 % Fin de entradas $
 
-
+global h;
 h = (b-a)/(n+1);
 %x(21) = x(20)+h;
 Q = zeros(6,n+1); % el + 1 para Q4,n+1
@@ -70,7 +70,15 @@ for i = n-1:-1:1
     C(i) = z(i)-zeta(i)*C(i+1);
 end
 
-% d' = z
-% c' = zeta
-% c = beta
-% b = alpha
+yy = zeros([n,1]);
+
+puntos = linspace(0,1,n+2);
+for i = 2:20
+    for j = 1:19
+    yy(j) = yy(j)+C(j)*baselinealse(j,puntos(i));
+    end
+end
+
+plot(puntos(2:20),yy,'--')
+hold on
+
