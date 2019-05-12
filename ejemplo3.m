@@ -6,7 +6,7 @@ global x
 x = [0 , 0.15, 0.19, 0.23, 0.25, 0.27, 0.30, 0.33, 0.35, 0.45, 0.49, 0.50, 0.55,..., 
     0.57, 0.60, 0.63, 0.65 0.67, 0.74, 0.86, 1];
 
-n = length(x)-2; % x[6+1] = 1 pero 6 es porque array inicia en 1 entonces n = 5
+n = length(x)-2; 
 
 global p
 p=@(x) exp(-x);
@@ -48,7 +48,7 @@ b = zeros(1,n);
 for i= 1:n
     alpha(i) = Q(4,i) + Q(4,i+1)+Q(2,i)+Q(3,i);
     beta(i)  = Q(1,i) - Q(4,i+1);
-    b(i)     = Q(5,i) + Q(6,i); % en el pdf esta menos pero no se nota bien es +
+    b(i)     = Q(5,i) + Q(6,i); 
 end
 
 a = zeros(1,n);
@@ -60,7 +60,7 @@ zeta(1) = beta(1)/a(1);
 z(1)    = b(1)/a(1);
 
 for i = 2:n-1
-    a(i)    = alpha(i) - beta(i-1)*zeta(i-1); %en pdf esta / pero algoritmo es *
+    a(i)    = alpha(i) - beta(i-1)*zeta(i-1); 
     zeta(i) = beta(i)  / a(i); % otra correccion aqui es a no alpha
     z(i)    = (b(i)    - beta(i-1)*z(i-1))/a(i);
 end
