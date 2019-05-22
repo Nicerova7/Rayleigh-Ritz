@@ -86,6 +86,6 @@ for i = 2:2*n+1
 end
 
 plot(puntos,yy)
-
+%legend('Base Lineal malla uniforme','Base Spline malla uniforme','Base lineal malla no uniforme')
 
 

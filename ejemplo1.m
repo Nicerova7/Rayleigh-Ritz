@@ -80,5 +80,8 @@ for i = 2:20
 end
 
 plot(puntos(2:20),yy,'--')
+xlabel('Xi valores')
+ylabel('Yi(Xi)')
+%legend('Base lineal malla uniforme')
 hold on
 

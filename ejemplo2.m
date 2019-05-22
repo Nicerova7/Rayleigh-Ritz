@@ -75,5 +75,6 @@ for i = 1:n+2
 end
 
 plot(puntos,yy,':')
+%legend('Base Spline malla uniforme')
 
 

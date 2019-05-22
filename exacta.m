@@ -10,3 +10,4 @@ for i = 1:50
 end
 
 plot(x,y,'b--o');
+%legend('Base Lineal malla uniforme','Base Spline malla uniforme','Base lineal malla no uniforme','Método exacto')
