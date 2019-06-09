@@ -1,5 +1,7 @@
 format long
 
+% Caso simetrico base lineal malla uniforme %
+
 % Entradas %
 a = 0; b = 1; n = 19; % n = 19 pero como comienza con 0 son 19+1 = 20 valores
 

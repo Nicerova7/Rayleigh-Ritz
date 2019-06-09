@@ -1,5 +1,7 @@
 format long
 
+% Caso simetrico base lineal malla no uniforme %
+
 % ENTRADAS $
 
 global x

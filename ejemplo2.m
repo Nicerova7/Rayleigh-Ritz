@@ -1,5 +1,7 @@
 format long
 
+% Caso no necesariamente simetrico spline cubico malla uniforme %
+
 % ENTRADAS $
 
 global n;
