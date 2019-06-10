@@ -72,18 +72,21 @@ for i = n-1:-1:1
     C(i) = z(i)-zeta(i)*C(i+1);
 end
 
-yy = zeros([n,1]);
 
-puntos = linspace(0,1,n+2);
-for i = 2:20
-    for j = 1:19
-    yy(j) = yy(j)+C(j)*baselinealse(j,puntos(i));
+xx = 40; % puntos para gráficar.
+yy = zeros([xx,1]);
+puntos = linspace(0,1,xx);
+
+for i = 1:xx
+    for j = 1:n
+    yy(i) = yy(i) + C(j)*baselinealse(j,puntos(i));
     end
 end
 
-plot(puntos(2:20),yy,'--')
+%subplot(2,1,1)
+plot(puntos,yy,'--')
 xlabel('Xi valores')
 ylabel('Yi(Xi)')
-%legend('Base lineal malla uniforme')
+title('Base lineal caso simetrico: malla uniforme')
 hold on
 

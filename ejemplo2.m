@@ -65,18 +65,22 @@ end
 c = linsolve(a,b);
 % luego paso 11 y fin
 
+xx = 40;
 
-yy = zeros([n+2,1]); % En este método tenemos 2 más de salida
+yy = zeros([xx,1]); % En este método tenemos 2 más de salida
 
-puntos = linspace(0,1,n+2);
+puntos = linspace(0,1,xx);
 
-for i = 1:n+2
+for i = 1:xx
     for j = 1:n+2
     yy(i) = yy(i)+c(j)*tracubico(@S,j-1,puntos(i)); %tracubico != base lineal
     end
 end
 
+%subplot(2,1,1)
 plot(puntos,yy,':')
-%legend('Base Spline malla uniforme')
-
+xlabel('Xi valores')
+ylabel('Yi(Xi)')
+title('Base Spline caso no necesariamente simétrico: malla uniforme')
+hold on
 

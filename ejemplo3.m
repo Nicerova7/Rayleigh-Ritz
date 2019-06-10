@@ -78,16 +78,21 @@ for i = n-1:-1:1
     C(i) = z(i)-zeta(i)*C(i+1);
 end
 
-yy = zeros([2*n+2,1]);
-puntos = linspace(0,1,2*n+2);
 
-for i = 2:2*n+1
+xx = 40;
+yy1 = zeros([xx,1]);
+puntos = linspace(0,1,xx);
+
+for i = 1:xx
     for j = 1:n
-    yy(i-1) = yy(i-1)+C(j)*baselinealse2(j,puntos(i));
+    yy1(i) = yy1(i) + C(j)*baselinealse2(j,puntos(i));
     end
 end
 
-plot(puntos,yy)
-%legend('Base Lineal malla uniforme','Base Spline malla uniforme','Base lineal malla no uniforme')
-
+%subplot(2,1,2)
+plot(puntos,yy1)
+xlabel('Xi valores')
+ylabel('Yi(Xi)')
+title('Base lineal caso simétrico: malla no uniforme')
+hold on
 
